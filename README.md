@@ -18,7 +18,9 @@
 
 - Dump objects. On/off dumping with tag `-tags dump`.
 - Dump errors. On/off dumping with tag `-tags dumperr`.
-- Output dumps to stdout, stderr and files.
+- Output destination can be cahnged to stdout, stderr, discard and files.
+  - Object dumps with environmental variable `DUMP_OUTPUT`.
+  - Error dumps with environemtnal variable `DUMP_OUTPUT`.
 - Easy stack frames manipulation.
 
 ## Tested Environments
