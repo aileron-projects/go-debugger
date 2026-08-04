@@ -33,9 +33,9 @@ func (l *Location) String() string {
 	return builder.String()
 }
 
-// FrameToLocation converts [runtime.Frame] to [Location].
-// It returns zero-value when f is empty.
-func FrameToLocation(f runtime.Frame) Location {
+// FrameLocation converts [runtime.Frame] to [Location].
+// It returns zero-value Location when f is empty.
+func FrameLocation(f runtime.Frame) Location {
 	if f.PC == 0 {
 		return Location{}
 	}
@@ -57,11 +57,11 @@ func FrameToLocation(f runtime.Frame) Location {
 	}
 }
 
-// FramesToLocations returns a slice of [Location] from frames.
-func FramesToLocations(fs []runtime.Frame) []Location {
+// FramesLocations returns a slice of [Location] from frames.
+func FramesLocations(fs []runtime.Frame) []Location {
 	frames := make([]Location, len(fs))
 	for i := range fs {
-		frames[i] = FrameToLocation(fs[i])
+		frames[i] = FrameLocation(fs[i])
 	}
 	return frames
 }

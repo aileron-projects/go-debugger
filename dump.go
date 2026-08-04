@@ -74,7 +74,7 @@ func DumpAlwaysTo(w io.Writer, msg string, a ...any) {
 }
 
 func dump(w io.Writer, msg string, a ...any) {
-	loc := FrameToLocation(CallerFrame(2))
+	loc := FrameLocation(CallerFrame(2))
 	if len(dumpPkg) > 0 && !slices.Contains(dumpPkg, loc.Pkg) {
 		return
 	}

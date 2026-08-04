@@ -78,7 +78,7 @@ func dumpErr(w io.Writer, msg string, errs ...error) {
 		return
 	}
 
-	loc := FrameToLocation(CallerFrame(2))
+	loc := FrameLocation(CallerFrame(2))
 	if len(dumpErrPkg) > 0 && !slices.Contains(dumpErrPkg, loc.Pkg) {
 		return
 	}

@@ -9,7 +9,7 @@ import (
 	"github.com/aileron-projects/go-tester"
 )
 
-func TestFrameToLocation(t *testing.T) {
+func TestFrameLocation(t *testing.T) {
 	t.Parallel()
 	testCases := map[string]struct {
 		frame runtime.Frame
@@ -39,14 +39,14 @@ func TestFrameToLocation(t *testing.T) {
 	}
 	for name, tc := range testCases {
 		t.Run(name, func(t *testing.T) {
-			f := debugger.FrameToLocation(tc.frame)
+			f := debugger.FrameLocation(tc.frame)
 			tester.AssertEqual(t, tc.want, f)
 			tester.AssertEqual(t, tc.str, f.String())
 		})
 	}
 }
 
-func TestFramesToLocations(t *testing.T) {
+func TestFramesLocations(t *testing.T) {
 	t.Parallel()
 	testCases := map[string]struct {
 		frames []runtime.Frame
@@ -77,7 +77,7 @@ func TestFramesToLocations(t *testing.T) {
 	}
 	for name, tc := range testCases {
 		t.Run(name, func(t *testing.T) {
-			fs := debugger.FramesToLocations(tc.frames)
+			fs := debugger.FramesLocations(tc.frames)
 			if !(len(fs) == len(tc.want)) {
 				t.Errorf("length not match. want:%d got:%d", len(tc.want), len(fs))
 			}

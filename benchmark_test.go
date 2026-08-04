@@ -20,16 +20,16 @@ func BenchmarkCallerFrames(b *testing.B) {
 	}
 }
 
-func BenchmarkConvertFrame(b *testing.B) {
+func BenchmarkFrameLocation(b *testing.B) {
 	b.ResetTimer()
 	for b.Loop() {
-		debugger.FrameToLocation(debugger.CallerFrame(0))
+		debugger.FrameLocation(debugger.CallerFrame(0))
 	}
 }
 
-func BenchmarkConvertFrames(b *testing.B) {
+func BenchmarkFramesLocations(b *testing.B) {
 	b.ResetTimer()
 	for b.Loop() {
-		debugger.FramesToLocations(debugger.CallerFrames(0))
+		debugger.FramesLocations(debugger.CallerFrames(0))
 	}
 }
