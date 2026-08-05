@@ -86,7 +86,7 @@ func dumpErr(w io.Writer, msg string, errs ...error) {
 	stack := make([]byte, 1<<13) // Read max 8kiB.
 	n := runtime.Stack(stack, false)
 
-	_, _ = w.Write([]byte(time.Now().Format(time.DateTime) + " [DUMPERR] " + msg + "\n"))
+	_, _ = w.Write([]byte(time.Now().Format(time.DateTime) + " [DEBUGGER][DUMPERR] " + msg + "\n"))
 	_, _ = w.Write([]byte("  | Caller: " + loc.String() + "\n"))
 
 	pw := &prefixWriter{

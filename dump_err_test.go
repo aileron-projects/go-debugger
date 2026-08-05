@@ -38,7 +38,7 @@ func TestDumpErrAlwaysTo(t *testing.T) {
 			var buf bytes.Buffer
 			debugger.DumpErrAlwaysTo(&buf, "", tc.errs...)
 			result := buf.String()
-			tester.AssertEqual(t, true, strings.Contains(result, "[DUMPERR]"))
+			tester.AssertEqual(t, true, strings.Contains(result, "[DEBUGGER][DUMPERR]"))
 			for c, w := range tc.wants {
 				if !tester.AssertEqual(t, true, strings.Contains(result, w)) {
 					t.Log(c, ": ", "`"+w+"`", "is not contained")

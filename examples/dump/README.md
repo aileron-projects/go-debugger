@@ -23,7 +23,7 @@ It show the profile of `bob`.
 It does not show the profile of `alice`.
 
 ```txt
-2026-08-01 11:13:16 [DUMP] dump always profile
+2026-08-01 11:13:16 [DEBUGGER][DUMP] dump always profile
   | Caller: Pkg:main File:main.go Func:main Line:31
   | ┌── args[0]
   | (*main.profile)({
@@ -53,7 +53,7 @@ go run -tags dump ./main.go
 It shows both profiles of `alice` and `bob`.
 
 ```txt
-2026-08-01 11:11:30 [DUMP] dump profile
+2026-08-01 11:11:30 [DEBUGGER][DUMP] dump profile
   | Caller: Pkg:main File:main.go Func:main Line:28
   | ┌── args[0]
   | (*main.profile)({
@@ -69,7 +69,7 @@ It shows both profiles of `alice` and `bob`.
   |   (string) (len=4) "Java": (int) 1
   |  }
   | })
-2026-08-01 11:11:30 [DUMP] dump always profile
+2026-08-01 11:11:30 [DEBUGGER][DUMP] dump always profile
   | Caller: Pkg:main File:main.go Func:main Line:31
   | ┌── args[0]
   | (*main.profile)({

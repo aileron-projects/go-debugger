@@ -79,7 +79,7 @@ func dump(w io.Writer, msg string, a ...any) {
 		return
 	}
 
-	_, _ = w.Write([]byte(time.Now().Format(time.DateTime) + " [DUMP] " + msg + "\n"))
+	_, _ = w.Write([]byte(time.Now().Format(time.DateTime) + " [DEBUGGER][DUMP] " + msg + "\n"))
 	_, _ = w.Write([]byte("  | Caller: " + loc.String() + "\n"))
 
 	pw := &prefixWriter{

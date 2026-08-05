@@ -105,7 +105,7 @@ debugger.DumpErr("this is an example.", io.EOF)
 
 // Example output:
 // 
-// 2026-08-01 11:49:40 [DUMPERR] this is an example.
+// 2026-08-01 11:49:40 [DEBUGGER][DUMPERR] this is an example.
 //   | Caller: Pkg:github.com/aileron-projects/go-debugger_test File:example_test.go Func:Example Line:36
 //   | ┌── Error: EOF
 //   | (*errors.errorString)(EOF)

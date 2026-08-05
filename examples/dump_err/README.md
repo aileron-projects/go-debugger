@@ -24,7 +24,7 @@ It show the `VALIDATION_ERROR`.
 It does not show the `HTTP_ERROR`.
 
 ```txt
-2026-08-01 11:21:38 [DUMPERR] dump error always
+2026-08-01 11:21:38 [DEBUGGER][DUMPERR] dump error always
   | Caller: Pkg:main File:main.go Func:main Line:36
   | ┌── Error: VALIDATION_ERROR: parameter must be number
   | (*main.MyError)(VALIDATION_ERROR: parameter must be number)
@@ -44,7 +44,7 @@ go run -tags dumperr ./main.go
 It shows both error dumps of `VALIDATION_ERROR` and `HTTP_ERROR`.
 
 ```txt
-2026-08-01 11:26:21 [DUMPERR] dump error
+2026-08-01 11:26:21 [DEBUGGER][DUMPERR] dump error
   | Caller: Pkg:main File:main.go Func:main Line:33
   | ┌── Error: HTTP_ERROR: request failed
   | (*main.MyError)(HTTP_ERROR: request failed)
@@ -52,7 +52,7 @@ It shows both error dumps of `VALIDATION_ERROR` and `HTTP_ERROR`.
   | goroutine 1 [running]:
 ~~~ stack trace omitted ~~~
 
-2026-08-01 11:26:21 [DUMPERR] dump error always
+2026-08-01 11:26:21 [DEBUGGER][DUMPERR] dump error always
   | Caller: Pkg:main File:main.go Func:main Line:36
   | ┌── Error: VALIDATION_ERROR: parameter must be number
   | (*main.MyError)(VALIDATION_ERROR: parameter must be number)
