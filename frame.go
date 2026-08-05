@@ -41,9 +41,9 @@ func FrameLocation(f runtime.Frame) Location {
 	}
 	file := f.File
 	pkg, fn, pkgfn := "", f.Function, f.Function // pkgfn is "<Pkg>.<Func>"
-	j := max(0, strings.LastIndexByte(pkgfn, '/'))
-	if i := strings.IndexByte(pkgfn[j:], '.'); i > 0 {
-		pkg, fn = pkgfn[:j+i], pkgfn[j+i+1:]
+	slash := max(0, strings.LastIndexByte(pkgfn, '/'))
+	if dot := strings.IndexByte(pkgfn[slash:], '.'); dot >= 0 {
+		pkg, fn = pkgfn[:slash+dot], pkgfn[slash+dot+1:]
 		file = strings.TrimPrefix(strings.TrimPrefix(file, pkg), "/")
 	}
 	return Location{
