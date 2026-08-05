@@ -22,9 +22,14 @@ func TestFrameLocation(t *testing.T) {
 			str:   "Pkg: File: Func: Line:0",
 		},
 		"non empty frame": {
-			frame: runtime.Frame{PC: 123, Function: "foo/bar.testFunc", File: "test.go", Line: 100},
+			frame: runtime.Frame{PC: 123, Function: "foo/bar.testFunc", File: "foo/bar/test.go", Line: 100},
 			want:  debugger.Location{Pkg: "foo/bar", File: "test.go", Func: "testFunc", Line: 100},
 			str:   "Pkg:foo/bar File:test.go Func:testFunc Line:100",
+		},
+		"inline func": {
+			frame: runtime.Frame{PC: 123, Function: "foo/bar.testFunc.func1", File: "foo/bar/test.go", Line: 100},
+			want:  debugger.Location{Pkg: "foo/bar", File: "test.go", Func: "testFunc.func1", Line: 100},
+			str:   "Pkg:foo/bar File:test.go Func:testFunc.func1 Line:100",
 		},
 		"short func name": {
 			frame: runtime.Frame{PC: 123, Function: "bar.testFunc", File: "test.go", Line: 100},
@@ -33,8 +38,8 @@ func TestFrameLocation(t *testing.T) {
 		},
 		"short file name": {
 			frame: runtime.Frame{PC: 123, Function: "foo/bar.testFunc", File: "baz/test.go", Line: 100},
-			want:  debugger.Location{Pkg: "foo/bar", File: "test.go", Func: "testFunc", Line: 100},
-			str:   "Pkg:foo/bar File:test.go Func:testFunc Line:100",
+			want:  debugger.Location{Pkg: "foo/bar", File: "baz/test.go", Func: "testFunc", Line: 100},
+			str:   "Pkg:foo/bar File:baz/test.go Func:testFunc Line:100",
 		},
 	}
 	for name, tc := range testCases {
