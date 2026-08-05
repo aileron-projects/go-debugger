@@ -19,8 +19,8 @@
 - Dump objects. On/off dumping with tag `-tags dump`.
 - Dump errors. On/off dumping with tag `-tags dumperr`.
 - Output destination can be cahnged to stdout, stderr, discard and files.
-  - Object dumps with environmental variable `DUMP_OUTPUT`.
-  - Error dumps with environemtnal variable `DUMP_OUTPUT`.
+  - Object dumps with environmental variable `GO_DEBUGGER_DUMP_OUTPUT`.
+  - Error dumps with environemtnal variable `GO_DEBUGGER_DUMP_OUTPUT`.
 - Easy stack frames manipulation.
 
 ## Tested Environments
@@ -60,8 +60,8 @@ The function `Dump` works with build tag so it can work only when debugging.
 - `DumpAlways` and `DumpAlwaysTo` works without any build tag.
 
 By default, `Dump` and `DumpAlways` output dumps to stdout.
-It can be changed by the environment variable `DUMP_OUTPUT`.
-`DUMP_OUTPUT` can take one of these values.
+It can be changed by the environment variable `GO_DEBUGGER_DUMP_OUTPUT`.
+`GO_DEBUGGER_DUMP_OUTPUT` can take one of these values.
 
 - `stdout`: standard output
 - `stderr`: standard error output
@@ -98,7 +98,7 @@ Use following function for error dumps.
 - `DumpErr` and `DumpErrTo` works with build tag `-tags dumperr`.
 - `DumpErrAlways` and `DumpErrAlwaysTo` works without any build tag.
 
-And use `DUMPERR_OUTPUT` to change dump output destination.
+And use `GO_DEBUGGER_DUMPERR_OUTPUT` to change dump output destination.
 
 ```go
 debugger.DumpErr("this is an example.", io.EOF)
@@ -114,3 +114,15 @@ debugger.DumpErr("this is an example.", io.EOF)
 //   | github.com/aileron-projects/go-debugger.dumpErr({0x7ff6afbde608, 0x1615158b2058}, {0x7ff6afa4598e, 0x13}, {0x1615158d7a48, 0x1, 0x1615158c63f0?})
 // ~~ stack trace omitted ~~~
 ```
+
+## Build Tags
+
+- `dump`: enables object dump output to work.
+- `dumperr`: enables error dump output to work.
+
+## Enviromental Variables
+
+- `GO_DEBUGGER_DUMP_OUTPUT`: optionaly specifies object dump output destination. `stdout`, `stderr`, `discard` or `file`.
+- `GO_DEBUGGER_DUMP_PACKAGES`: optionaly filters go packages to output object dumps.
+- `GO_DEBUGGER_DUMPERR_OUTPUT`: optionaly specifies error dump output destination. `stdout`, `stderr`, `discard` or `file`.
+- `GO_DEBUGGER_DUMPERR_PACKAGES`: optionaly filters go packages to output error dumps.

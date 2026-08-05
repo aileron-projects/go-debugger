@@ -16,11 +16,11 @@ var (
 	// muDumpErr protects dumpErrTo
 	muDumpErr = sync.Mutex{}
 	// dumpErrTo is the error dump output destination.
-	// Use "DUMPERR_OUTPUT" environment variable.
+	// Use "GO_DEBUGGER_DUMPERR_OUTPUT" environment variable.
 	dumpErrTo io.Writer = os.Stdout
 	// dumpErrPkg is the package names to dump.
 	// If empty all dumps will be output.
-	// Use "DUMPERR_PACKAGES" environment variable.
+	// Use "GO_DEBUGGER_DUMPERR_PACKAGES" environment variable.
 	dumpErrPkg []string = nil
 	// DumpErrConfig is the dump format config.
 	// See [spew.ConfigState].
@@ -33,8 +33,8 @@ var (
 )
 
 func init() {
-	dumpErrTo = getWriter(os.Getenv("DUMPERR_OUTPUT"), "go-dumperr-*.log")
-	for s := range strings.SplitSeq(os.Getenv("DUMPERR_PACKAGES"), ",") {
+	dumpErrTo = getWriter(os.Getenv("GO_DEBUGGER_DUMPERR_OUTPUT"), "go-dumperr-*.log")
+	for s := range strings.SplitSeq(os.Getenv("GO_DEBUGGER_DUMPERR_PACKAGES"), ",") {
 		if dp := strings.TrimSpace(s); dp != "" {
 			dumpPkg = append(dumpPkg, dp)
 		}
